@@ -26,6 +26,7 @@ module.exports = function (ctx) {
       // extractCSS: false,
       extendWebpack (cfg) {
         cfg.resolve.alias.settings = path.join(__dirname, 'src', 'settings')
+        cfg.resolve.alias.services = path.join(__dirname, 'src', 'services')
       }
     },
     devServer: {

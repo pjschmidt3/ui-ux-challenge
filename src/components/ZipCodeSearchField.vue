@@ -28,10 +28,13 @@
 
 <script>
 import { required } from 'vuelidate/lib/validators'
+import ZipCodeService from 'services/zip-code.service'
+
 export default {
   data () {
     return {
-      zipCode: ''
+      zipCode: '',
+      zipCodeService: new ZipCodeService()
     }
   },
 
@@ -50,6 +53,17 @@ export default {
       if (this.$v.$error) {
         return
       }
+
+      return this.zipCodeService.fetchZipCodeData(this.zipCode)
+        .then(data => {
+          this.$store.dispatch('searchResults/updateResults', data)
+          this.$store.dispatch('searchResults/updateSearchError', null)
+        })
+        .catch(err => {
+          console.error(err)
+          this.$store.dispatch('searchResults/updateResults', [])
+          this.$store.dispatch('searchResults/updateSearchError', err.response.data.error)
+        })
     }
   }
 }
