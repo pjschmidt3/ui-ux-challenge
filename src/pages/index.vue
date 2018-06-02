@@ -5,15 +5,20 @@
         <TargetExclusiveOffer />
       </div>
     </div>
+
+    <SearchResults />
+
   </q-page>
 </template>
 
 <script>
   import TargetExclusiveOffer from 'components/TargetExclusiveOffer'
+  import SearchResults from 'components/SearchResults'
 
   export default {
     components: {
-      TargetExclusiveOffer
+      TargetExclusiveOffer,
+      SearchResults
     }
   }
 </script>
