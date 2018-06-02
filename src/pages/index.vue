@@ -3,22 +3,27 @@
     <div class="row justify-center flex">
       <div class="col-xs-12 col-sm-10">
         <TargetExclusiveOffer />
+
+        <SearchResults />
+
+        <TargetShowcase />
       </div>
     </div>
-
-    <SearchResults />
-
   </q-page>
 </template>
 
 <script>
   import TargetExclusiveOffer from 'components/TargetExclusiveOffer'
   import SearchResults from 'components/SearchResults'
+  import TargetShowcase from 'components/TargetShowcase'
 
   export default {
+    name: 'PageIndex',
+
     components: {
       TargetExclusiveOffer,
-      SearchResults
+      SearchResults,
+      TargetShowcase
     }
   }
 </script>

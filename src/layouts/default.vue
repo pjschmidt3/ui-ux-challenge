@@ -21,26 +21,20 @@
 </template>
 
 <script>
-import { openURL } from 'quasar'
-import PromoBar from 'components/PromoBar'
-import TopNav from 'components/TopNav'
-import Footer from 'components/Footer'
-export default {
-  name: 'LayoutDefault',
-  data () {
-    return {
-      leftDrawerOpen: this.$q.platform.is.desktop
+  import { openURL } from 'quasar'
+  import PromoBar from 'components/PromoBar'
+  import TopNav from 'components/TopNav'
+  import Footer from 'components/Footer'
+  export default {
+    methods: {
+      openURL
+    },
+    components: {
+      PromoBar,
+      TopNav,
+      Footer
     }
-  },
-  methods: {
-    openURL
-  },
-  components: {
-    PromoBar,
-    TopNav,
-    Footer
   }
-}
 </script>
 
 <style lang="stylus">
