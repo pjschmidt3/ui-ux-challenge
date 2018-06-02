@@ -1,5 +1,5 @@
 // Configuration for your app
-
+const path = require('path')
 module.exports = function (ctx) {
   return {
     // app plugins (/src/plugins)
@@ -10,7 +10,6 @@ module.exports = function (ctx) {
       'app.styl'
     ],
     extras: [
-      ctx.theme.mat ? 'roboto-font' : null,
       'material-icons' // optional, you are not bound to it
       // 'ionicons',
       // 'mdi',
@@ -25,12 +24,7 @@ module.exports = function (ctx) {
       // analyze: true,
       // extractCSS: false,
       extendWebpack (cfg) {
-        cfg.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules|quasar)/
-        })
+        cfg.resolve.alias.settings = path.join(__dirname, 'src', 'settings')
       }
     },
     devServer: {
@@ -43,6 +37,7 @@ module.exports = function (ctx) {
       components: [
         'QLayout',
         'QLayoutHeader',
+        'QLayoutFooter',
         'QLayoutDrawer',
         'QPageContainer',
         'QPage',
@@ -54,7 +49,9 @@ module.exports = function (ctx) {
         'QListHeader',
         'QItem',
         'QItemMain',
-        'QItemSide'
+        'QItemSide',
+        'QField',
+        'QInput'
       ],
       directives: [
         'Ripple'
